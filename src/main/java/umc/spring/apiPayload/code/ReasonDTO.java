@@ -1,2 +1,14 @@
-package umc.spring.apiPayload.code.status;public class ReasonDTO {
+package umc.spring.apiPayload.code;
+
+import lombok.Builder;
+import lombok.Getter;
+import org.springframework.http.HttpStatus;
+
+@Getter
+@Builder
+public class ReasonDTO {
+    private final HttpStatus httpStatus;
+    private final String code;
+    private final String message;
+    private final boolean isSuccess;
 }
