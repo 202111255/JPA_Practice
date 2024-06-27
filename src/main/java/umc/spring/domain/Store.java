@@ -2,35 +2,46 @@ package umc.spring.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import umc.spring.domain.common.BaseEntity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Getter
 @Builder
+@DynamicInsert
+@DynamicUpdate
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
+@Getter
 public class Store extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 20)
+    @Column(nullable = false, length = 50)
     private String name;
 
-    @Column(nullable = false, length = 40)
+    @Column(nullable = false, length = 50)
     private String address;
 
-    @Column(nullable = false)
     private Float score;
-
-    @OneToMany(mappedBy = "store", cascade = CascadeType.ALL)
-    private List<Review> reviewList = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "region_id")
     private Region region;
+
+    @OneToMany(mappedBy = "store")
+    private List<Review> reviewList = new ArrayList<>();
+
+    public void setRegion(Region region) {
+        this.region = region;
+    }
+
+    public void updateScore(Float score) {
+        this.score = score;
+    }
 }
