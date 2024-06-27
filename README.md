@@ -1,1 +1,1 @@
-UMC_6th_Study 
+UMC_6th_Study 미션들 
