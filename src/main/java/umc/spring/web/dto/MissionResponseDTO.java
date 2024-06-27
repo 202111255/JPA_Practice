@@ -4,29 +4,18 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import umc.spring.domain.Region;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
-public class StoreResponseDTO {
-
-    @Getter
-    @Builder
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public static class JoinResultDTO{
-        Long id;
-        LocalDateTime createdAt;
-    }
+public class MissionResponseDTO {
 
     @Builder
     @Getter
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class ReviewPreViewListDTO{
-        List<ReviewResponseDTO.ReviewPreViewDTO> reviewList;
+    public static class MissionPreViewListDTO {
+        List<MissionPreViewDTO> missionList;
         Integer listSize;
         Integer totalPage;
         Long totalElements;
@@ -38,10 +27,10 @@ public class StoreResponseDTO {
     @Getter
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class ReviewPreViewDTO{
-        String ownerNickname;
-        Float score;
-        String body;
+    public static class MissionPreViewDTO{
+        Integer reward;
+        String missionSpec;
+        LocalDate deadLine;
         LocalDate createdAt;
     }
 }
